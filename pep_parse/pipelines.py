@@ -14,11 +14,8 @@ class PepParsePipeline:
         pass
 
     def process_item(self, item, spider):
-        if item['status'] not in PepParsePipeline.counter:
-            PepParsePipeline.counter[item['status']] = 0
-
-        PepParsePipeline.counter[item['status']] += 1
-
+        PC = PepParsePipeline.counter
+        PC[item['status']] = PC.get(item['status'], 0) + 1
         return item
 
     def close_spider(self, spider):
