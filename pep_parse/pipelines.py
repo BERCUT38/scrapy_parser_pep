@@ -14,8 +14,7 @@ class PepParsePipeline:
         pass
 
     def process_item(self, item, spider):
-        PC = PepParsePipeline.counter
-        PC[item['status']] = PC.get(item['status'], 0) + 1
+        self.counter[item['status']] = self.counter.get(item['status'], 0) + 1
         return item
 
     def close_spider(self, spider):
